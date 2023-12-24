@@ -15,7 +15,7 @@ local Request = (syn and syn.request) or request or (http and http.request) or h
 
 local function GET(Method, Account, ...)
     local Arguments = {...}
-    local Url = 'http://192.168.1.103:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
+    local Url = 'http://192.168.1.100:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
 
     for Index, Parameter in pairs(Arguments) do
         if typeof(Parameter) == 'boolean' then continue end
