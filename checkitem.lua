@@ -80,6 +80,7 @@ if MyAccount then
     end
     function checkspy()
         local seaLocation = getSeaLocation()
+        print(seaLocation)
         if seaLocation ~= "Sea 3" then
             return seaLocation
         end
