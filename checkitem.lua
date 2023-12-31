@@ -13,7 +13,7 @@ repeat task.wait()
         end
     end
 until game.Players.LocalPlayer.Team ~= nil
-local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/PC1.lua")()
+local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/PC.lua")()
 local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
 if MyAccount then 
 function formatNumber(v)
@@ -64,6 +64,36 @@ local getawaken = (function()
     end
     return table.concat(v99, ", ")
 end)
+function getSeaLocation()
+    local currentPlaceId = game.PlaceId
+    if currentPlaceId == 2753915549 then
+        return "Sea 1"
+    elseif currentPlaceId == 4442272183 then
+        return "Sea 2"
+    elseif currentPlaceId == 7449423635 then
+        return "Sea 3"
+    else
+        return "Không xác định"
+    end
+end
+function checkspy()
+    local seaLocation = getSeaLocation()
+    if seaLocation ~= "Sea 3" then
+        return seaLocation
+    end
+    local checkvalue =
+        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(
+        "InfoLeviathan",
+        "1"
+    )
+    if checkvalue == -1 then
+        return "I Don't Know"
+    elseif checkvalue ~= -1 and checkvalue < 5 then
+        return "You Can Pay Now"
+    elseif checkvalue == 5 then
+        return "You can find leviathan now"
+    end
+end
 function checkmelee()
         local checkmelee = {}
     if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuySharkmanKarate", true) == 1 then
@@ -83,6 +113,9 @@ function checkmelee()
     end
     if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuyGodhuman", true) == 1 then
         table.insert(checkmelee, "Godhuman")
+    end
+    if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuySanguineArt", true) == 1 then
+        table.insert(checkmelee, "Sanguine Art")
     end
     return table.concat(checkmelee, ", ")
 end
@@ -241,7 +274,7 @@ local level = game:GetService("Players").LocalPlayer.Data.Level.Value
 local beli = formatNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value)
 local fragment = formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value)
 MyAccount:SetAlias(setalias())
-MyAccount:SetDescription("Level: "..level..", Beli: "..beli..", Frag: "..fragment.."\nMelee: "..checkmelee().."\nSword: "..checkweapon().."\nGun: "..checkgun().."\nMaterial: "..checkmaterial().."\nFruit trong rương: "..checkfruit().."\nFruit Đang Sử Dụng: "..ddr..", Mastery: "..checkmasterydf().."\nAwaken: "..getawaken().."\nRace: "..checkrace().."\nLever Status: "..checkgatcan2().."\nTraining Sessions: "..CheckAcientOneStatus().."\nInventory: "..checkmirrorvamu())
+MyAccount:SetDescription("Level: "..level..", Beli: "..beli..", Frag: "..fragment.."\nMelee: "..checkmelee().."\nSword: "..checkweapon().."\nGun: "..checkgun().."\nMaterial: "..checkmaterial().."\nInventory: "..checkmirrorvamu().."\nFruit trong rương: "..checkfruit().."\nFruit Đang Sử Dụng: "..ddr..", Mastery: "..checkmasterydf().."\nAwaken: "..getawaken().."\nRace: "..checkrace().."\nLever Status: "..checkgatcan2().."\nTraining Sessions: "..CheckAcientOneStatus().."\nStatus SPY: "..checkspy())
     end
 else print( MyAccount  )
 end
