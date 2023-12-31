@@ -12,7 +12,7 @@ repeat task.wait()
         end
     end
 until game.Players.LocalPlayer.Team ~= nil
-local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/PC.lua")()
+local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/PC1.lua")()
 local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
 if MyAccount then
     function formatNumber(v)
@@ -66,33 +66,33 @@ if MyAccount then
         end
         return table.concat(v99, ", ")
     end)
-    function getSeaLocation()
-        local currentPlaceId = game.PlaceId
-        if currentPlaceId == 2753915549 then
-            return "Sea 1"
-        elseif currentPlaceId == 4442272183 then
-            return "Sea 2"
-        elseif currentPlaceId == 7449423635 then
-            return "Sea 3"
-        else
-            return "Không xác định"
-        end
-    end
-    function checkspy()
-        local seaLocation = getSeaLocation()
-        print(seaLocation)
-        if seaLocation ~= "Sea 3" then
-            return seaLocation
-        end
-        local checkvalue = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("InfoLeviathan","1")
-        if checkvalue == -1 then
-            return "I Don't Know"
-        elseif checkvalue ~= -1 and checkvalue < 5 then
-            return "You Can Pay Now"
-        elseif checkvalue == 5 then
-            return "You can find leviathan now"
-        end
-    end
+    -- function getSeaLocation()
+    --     local currentPlaceId = game.PlaceId
+    --     if currentPlaceId == 2753915549 then
+    --         return "Sea 1"
+    --     elseif currentPlaceId == 4442272183 then
+    --         return "Sea 2"
+    --     elseif currentPlaceId == 7449423635 then
+    --         return "Sea 3"
+    --     else
+    --         return "Không xác định"
+    --     end
+    -- end
+    -- function checkspy()
+    --     local seaLocation = getSeaLocation()
+    --     print(seaLocation)
+    --     if seaLocation ~= "Sea 3" then
+    --         return seaLocation
+    --     end
+    --     local checkvalue = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("InfoLeviathan","1")
+    --     if checkvalue == -1 then
+    --         return "I Don't Know"
+    --     elseif checkvalue ~= -1 and checkvalue < 5 then
+    --         return "You Can Pay Now"
+    --     elseif checkvalue == 5 then
+    --         return "You can find leviathan now"
+    --     end
+    -- end
     function checkmelee()
         local checkmelee = {}
         if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("BuySharkmanKarate", true) == 1 then
@@ -199,13 +199,10 @@ if MyAccount then
         if fruit == "Dough-Dough" and awk == "X, C, Z, TAP, F, V" then
             table.insert(asdas, "MCV2")
         end
-        -- Lưu kết quả trả về từ InvokeServer để sử dụng lại
         local inventory =
             game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(
             "getInventory"
         )
-
-        -- Kiểm tra các mục trong inventory và cập nhật trạng thái
         for i, v in pairs(inventory) do
             if v.Name == "Cursed Dual Katana" then
                 hasCursedDualKatana = true
@@ -268,7 +265,6 @@ if MyAccount then
         end
         return "Full Gear, Remaining " .. 10 - v228 .. " training sessions."
     end
-
     function checkmasterydf()
         mas = 0
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -285,7 +281,7 @@ if MyAccount then
         local fragment = formatNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value)
     end
     MyAccount:SetAlias(setalias())
-    MyAccount:SetDescription("Level: "..level..", Beli: "..beli..", Frag: "..fragment.."\nMelee: "..checkmelee().."\nSword: "..checkweapon().."\nGun: "..checkgun().."\nMaterial: "..checkmaterial().."\nInventory: "..checkmirrorvamu().."\nFruit trong rương: "..checkfruit().."\nFruit Đang Sử Dụng: "..ddr..", Mastery: "..checkmasterydf().."\nAwaken: "..getawaken().."\nRace: "..checkrace().."\nLever Status: "..checkgatcan2().."\nTraining Sessions: "..CheckAcientOneStatus().."\nStatus SPY: "..checkspy())
+    MyAccount:SetDescription("Level: "..level..", Beli: "..beli..", Frag: "..fragment.."\nMelee: "..checkmelee().."\nSword: "..checkweapon().."\nGun: "..checkgun().."\nMaterial: "..checkmaterial().."\nInventory: "..checkmirrorvamu().."\nFruit trong rương: "..checkfruit().."\nFruit Đang Sử Dụng: "..ddr..", Mastery: "..checkmasterydf().."\nAwaken: "..getawaken().."\nRace: "..checkrace().."\nLever Status: "..checkgatcan2().."\nTraining Sessions: "..CheckAcientOneStatus())
 else
-    print("Lỗi rồi")
+    print(MyAccount)
 end
