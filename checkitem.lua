@@ -287,5 +287,5 @@ if MyAccount then
     MyAccount:SetAlias(setalias())
     MyAccount:SetDescription("Level: "..level..", Beli: "..beli..", Frag: "..fragment.."\nMelee: "..checkmelee().."\nSword: "..checkweapon().."\nGun: "..checkgun().."\nMaterial: "..checkmaterial().."\nInventory: "..checkmirrorvamu().."\nFruit trong rương: "..checkfruit().."\nFruit Đang Sử Dụng: "..ddr..", Mastery: "..checkmasterydf().."\nAwaken: "..getawaken().."\nRace: "..checkrace().."\nLever Status: "..checkgatcan2().."\nTraining Sessions: "..CheckAcientOneStatus().."\nStatus SPY: "..checkspy())
 else
-    print(MyAccount)
+    print("Lỗi rồi")
 end
