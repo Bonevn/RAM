@@ -1,4 +1,4 @@
-_G.time = 10
+_G.time = 5
 _G.Pass = "123456"
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer:FindFirstChild("DataLoaded")
 repeat task.wait()
@@ -12,7 +12,7 @@ repeat task.wait()
         end
     end
 until game.Players.LocalPlayer.Team ~= nil
-local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/PC1.lua")()
+local RAMAccount = loadstring(game:HttpGet "https://raw.githubusercontent.com/Bonevn/RAM/main/A46.lua")()
 local MyAccount = RAMAccount.new(game:GetService "Players".LocalPlayer.Name)
 if MyAccount then
     function formatNumber(v)
