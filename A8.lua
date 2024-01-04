@@ -15,7 +15,7 @@ local Request = (syn and syn.request) or request or (http and http.request) or h
 
 local function GET(Method, Account, ...)
     local Arguments = {...}
-    local Url = 'http://192.168.1.170:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
+    local Url = 'http://192.168.1.2:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
 
     for Index, Parameter in pairs(Arguments) do
         if typeof(Parameter) == 'boolean' then continue end
@@ -39,7 +39,7 @@ end
 
 local function POST(Method, Account, Body, ...)
     local Arguments = {...}
-    local Url = 'http://192.168.1.170:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
+    local Url = 'http://192.168.1.2:' .. WebserverSettings.Port .. '/' .. Method .. '?Account=' .. Account
 
     for Index, Parameter in pairs(Arguments) do
         Url = '&' .. Url .. Parameter
